@@ -1,0 +1,151 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Git & GitHub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <i class="fab fa-github"></i>
+            <h2>Git & GitHub</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <h3>Básico</h3>
+                <ul>
+                    <li><a href="#introducao"><i class="fas fa-book"></i>Introdução</a></li>
+                    <li><a href="#instalacao"><i class="fas fa-download"></i>Instalação</a></li>
+                    <li><a href="#configuracao"><i class="fas fa-cog"></i>Configuração</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-section">
+                <h3>Fundamentos</h3>
+                <ul>
+                    <li><a href="#repositorios"><i class="fas fa-database"></i>Repositórios</a></li>
+                    <li><a href="#commits"><i class="fas fa-code-commit"></i>Commits</a></li>
+                    <li><a href="#branches"><i class="fas fa-code-branch"></i>Branches</a></li>
+                    <li><a href="#merge"><i class="fas fa-code-merge"></i>Merge</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <h3>Avançado</h3>
+                <ul>
+                    <li><a href="#workflow"><i class="fas fa-project-diagram"></i>Workflow</a></li>
+                    <li><a href="#conflitos"><i class="fas fa-exclamation-triangle"></i>Conflitos</a></li>
+                    <li><a href="#rebase"><i class="fas fa-history"></i>Rebase</a></li>
+                    <li><a href="#tags"><i class="fas fa-tag"></i>Tags</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <h3>GitHub</h3>
+                <ul>
+                    <li><a href="#github-intro"><i class="fab fa-github"></i>Introdução GitHub</a></li>
+                    <li><a href="#pull-requests"><i class="fas fa-code-pull-request"></i>Pull Requests</a></li>
+                    <li><a href="#issues"><i class="fas fa-exclamation-circle"></i>Issues</a></li>
+                    <li><a href="#actions"><i class="fas fa-play-circle"></i>Actions</a></li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <section id="introducao" class="section">
+            <div class="section-header">
+                <i class="fas fa-book"></i>
+                <h2>Introdução ao Git</h2>
+            </div>
+            <div class="card">
+                <p>Git é um sistema de controle de versão distribuído criado por Linus Torvalds em 2005. É uma ferramenta essencial para desenvolvimento de software, permitindo que você:</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i>Rastreie mudanças no código</li>
+                    <li><i class="fas fa-check"></i>Reverta para versões anteriores</li>
+                    <li><i class="fas fa-check"></i>Trabalhe em equipe eficientemente</li>
+                    <li><i class="fas fa-check"></i>Mantenha diferentes versões do projeto</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="instalacao" class="section">
+            <div class="section-header">
+                <i class="fas fa-download"></i>
+                <h2>Instalação</h2>
+            </div>
+            <div class="card">
+                <h3>Windows</h3>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-title">Download e instalação no Windows</span>
+                        <button class="copy-btn" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <pre><code>1. Acesse https://git-scm.com/download/win
+2. Baixe o instalador
+3. Execute o arquivo .exe
+4. Siga as instruções do instalador</code></pre>
+                </div>
+
+                <h3>macOS</h3>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-title">Instalação via Homebrew</span>
+                        <button class="copy-btn" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <pre><code>brew install git</code></pre>
+                </div>
+
+                <h3>Linux</h3>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-title">Instalação via apt (Ubuntu/Debian)</span>
+                        <button class="copy-btn" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <pre><code>sudo apt-get update
+sudo apt-get install git</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="configuracao" class="section">
+            <div class="section-header">
+                <i class="fas fa-cog"></i>
+                <h2>Configuração Inicial</h2>
+            </div>
+            <div class="card">
+                <p>Após instalar o Git, você precisa configurar suas credenciais:</p>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-title">Configurações globais</span>
+                        <button class="copy-btn" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <pre><code>git config --global user.name "Seu Nome"
+git config --global user.email "seu@email.com"
+git config --global core.editor "code --wait"  # Para VS Code
+git config --global init.defaultBranch main</code></pre>
+                </div>
+                
+                <div class="info-box">
+                    <i class="fas fa-info-circle"></i>
+                    <p>Estas configurações são armazenadas no arquivo <code>~/.gitconfig</code> e são aplicadas a todos os repositórios no seu computador.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Adicione mais seções conforme necessário -->
+    </main>
+</body>
+</html>
