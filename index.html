@@ -1,6 +1,7 @@
 <!-- index.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
     <aside class="sidebar">
         <div class="sidebar-header">
@@ -23,7 +25,7 @@
                     <li><a href="#configuracao"><i class="fas fa-cog"></i>Configuração</a></li>
                 </ul>
             </div>
-            
+
             <div class="nav-section">
                 <h3>Fundamentos</h3>
                 <ul>
@@ -63,7 +65,8 @@
                 <h2>Introdução ao Git</h2>
             </div>
             <div class="card">
-                <p>Git é um sistema de controle de versão distribuído criado por Linus Torvalds em 2005. É uma ferramenta essencial para desenvolvimento de software, permitindo que você:</p>
+                <p>Git é um sistema de controle de versão distribuído criado por Linus Torvalds em 2005. É uma
+                    ferramenta essencial para desenvolvimento de software, permitindo que você:</p>
                 <ul class="feature-list">
                     <li><i class="fas fa-check"></i>Rastreie mudanças no código</li>
                     <li><i class="fas fa-check"></i>Reverta para versões anteriores</li>
@@ -137,15 +140,261 @@ git config --global user.email "seu@email.com"
 git config --global core.editor "code --wait"  # Para VS Code
 git config --global init.defaultBranch main</code></pre>
                 </div>
-                
+
                 <div class="info-box">
                     <i class="fas fa-info-circle"></i>
-                    <p>Estas configurações são armazenadas no arquivo <code>~/.gitconfig</code> e são aplicadas a todos os repositórios no seu computador.</p>
+                    <p>Estas configurações são armazenadas no arquivo <code>~/.gitconfig</code> e são aplicadas a todos
+                        os repositórios no seu computador.</p>
                 </div>
             </div>
         </section>
 
         <!-- Adicione mais seções conforme necessário -->
+
+        <!-- Seção de Fundamentos -->
+        <section id="repositorios" class="section">
+            <div class="section-header">
+                <i class="fas fa-database"></i>
+                <h2>Repositórios</h2>
+            </div>
+            <div class="card">
+                <p>Um repositório é um diretório onde o Git armazena todos os arquivos do projeto, além de todo o
+                    histórico de alterações feitas. Um repositório pode ser local (no seu computador) ou remoto (no
+                    GitHub, GitLab, etc.), facilitando o trabalho colaborativo.</p>
+                <p><strong>Exemplo:</strong> para criar um repositório local e conectá-lo a um repositório remoto:</p>
+                <div class="code-block">
+                    <pre>
+                        <code>mkdir meu-projeto
+                            cd meu-projeto
+                            git init
+                            git remote add origin https://github.com/usuario/meu-projeto.git
+                        </code>
+                        <pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="commits" class="section">
+            <div class="section-header">
+                <i class="fas fa-code-commit"></i>
+                <h2>Commits</h2>
+            </div>
+            <div class="card">
+                <p>Commits são "fotografias" do estado atual do seu projeto. Cada commit possui uma mensagem que
+                    descreve as mudanças feitas, facilitando o rastreamento do histórico e das versões do projeto.</p>
+                <p><strong>Exemplo:</strong> ao modificar um arquivo, você pode salvá-lo no histórico com:</p>
+                <div class="code-block">
+                    <pre><code>git add arquivo-modificado.txt
+                    git commit -m "Corrigindo o bug na função X"</code></pre>
+                </div>
+                <p>A mensagem do commit deve ser clara para facilitar a colaboração e o entendimento do histórico.</p>
+            </div>
+        </section>
+
+        <section id="branches" class="section">
+            <div class="section-header">
+                <i class="fas fa-code-branch"></i>
+                <h2>Branches</h2>
+            </div>
+            <div class="card">
+                <p>Branches são "linhas do tempo" paralelas do seu projeto, permitindo que você trabalhe em novas
+                    funcionalidades sem interferir no código principal. Assim, cada branch pode ser desenvolvida e
+                    testada de forma independente.</p>
+                <p><strong>Exemplo:</strong> para criar e alternar para uma nova branch:</p>
+                <div class="code-block">
+                    <pre>
+                        <code>
+git branch nova-funcionalidade
+git checkout nova-funcionalidade
+                        </code>
+                    </pre>
+                </div>
+                <p>Ao finalizar o trabalho em uma branch, você pode integrá-la ao código principal (usualmente a branch
+                    "main") por meio de um <code>merge</code>.</p>
+            </div>
+        </section>
+
+        <section id="merge" class="section">
+            <div class="section-header">
+                <i class="fas fa-code-merge"></i>
+                <h2>Merge</h2>
+            </div>
+            <div class="card">
+                <p>Merge é o processo de integrar as mudanças feitas em uma branch para outra, frequentemente combinando
+                    a branch de desenvolvimento com a branch principal.</p>
+                <p><strong>Exemplo:</strong> para mesclar a branch "nova-funcionalidade" à branch "main":</p>
+                <div class="code-block">
+                    <pre>
+                        <code>
+git checkout maingit merge nova-funcionalidade
+                        </code>
+                    </pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Avançado -->
+        <section id="workflow" class="section">
+            <div class="section-header">
+                <i class="fas fa-project-diagram"></i>
+                <h2>Workflow</h2>
+            </div>
+            <div class="card">
+                <p>Workflow define a metodologia de trabalho com Git, geralmente envolvendo pull requests e revisões de
+                    código. O GitHub flow, por exemplo, sugere criar uma branch para cada nova funcionalidade e fazer um
+                    pull request para revisão.</p>
+                <p><strong>Exemplo:</strong> no GitHub, você pode criar um pull request para solicitar a integração de
+                    uma branch de desenvolvimento à branch principal.</p>
+                <div class="code-block">
+                    <pre><code># Crie uma nova branch
+git checkout -b nova-funcionalidade
+
+# Após as mudanças, envie para o repositório remoto
+git push origin nova-funcionalidade
+
+# Abra um Pull Request no GitHub para revisão</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="conflitos" class="section">
+            <div class="section-header">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h2>Conflitos</h2>
+            </div>
+            <div class="card">
+                <p>Conflitos ocorrem quando duas branches possuem alterações incompatíveis no mesmo arquivo. O Git marca
+                    as diferenças para que você resolva manualmente e determine quais mudanças serão mantidas.</p>
+                <p><strong>Exemplo:</strong> ao ocorrer um conflito, edite o arquivo conforme necessário e faça um novo
+                    commit:</p>
+                <div class="code-block">
+                    <pre><code># Após resolver o conflito, adicione e faça o commit
+git add arquivo-resolvido.txt
+git commit -m "Resolvendo conflito no arquivo"</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="rebase" class="section">
+            <div class="section-header">
+                <i class="fas fa-history"></i>
+                <h2>Rebase</h2>
+            </div>
+            <div class="card">
+                <p>O comando <code>rebase</code> reorganiza o histórico de commits, útil para manter uma linha do tempo
+                    linear. Ao fazer um rebase, você pode "reaplicar" os commits da sua branch em uma nova base, como a
+                    branch principal.</p>
+                <p><strong>Exemplo:</strong> para fazer o rebase da sua branch na branch "main":</p>
+                <div class="code-block">
+                    <pre><code>git checkout minha-branch
+git rebase main</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="tags" class="section">
+            <div class="section-header">
+                <i class="fas fa-tag"></i>
+                <h2>Tags</h2>
+            </div>
+            <div class="card">
+                <p>Tags são usadas para marcar versões importantes no histórico, como lançamentos ou milestones do
+                    projeto.</p>
+                <p><strong>Exemplo:</strong> para criar uma tag de versão 1.0 e enviar para o repositório remoto:</p>
+                <div class="code-block">
+                    <pre><code>git tag v1.0
+git push origin v1.0</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção GitHub -->
+        <section id="github-intro" class="section">
+            <div class="section-header">
+                <i class="fab fa-github"></i>
+                <h2>Introdução ao GitHub</h2>
+            </div>
+            <div class="card">
+                <p>GitHub é uma plataforma de hospedagem de código baseada em Git, que permite colaboração entre
+                    desenvolvedores, além de oferecer ferramentas para o controle de versão e desenvolvimento em equipe.
+                </p>
+                <p><strong>Exemplo:</strong> Para enviar um projeto local ao GitHub, crie um repositório no site e
+                    conecte-o ao repositório local:</p>
+                <div class="code-block">
+                    <pre><code>git remote add origin https://github.com/usuario/projeto.git
+git push -u origin main</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="pull-requests" class="section">
+            <div class="section-header">
+                <i class="fas fa-code-pull-request"></i>
+                <h2>Pull Requests</h2>
+            </div>
+            <div class="card">
+                <p>Pull Requests (PRs) permitem que você proponha alterações ao repositório. Eles são revisados antes de
+                    serem integrados, garantindo a qualidade do código.</p>
+                <p><strong>Exemplo:</strong> Após fazer push de uma nova branch para o GitHub, acesse o repositório
+                    online e clique em "New Pull Request" para iniciar uma revisão.</p>
+                <div class="code-block">
+                    <pre><code># Crie uma nova branch, faça as alterações e envie para o GitHub
+git checkout -b minha-feature
+git push origin minha-feature
+
+# Em seguida, crie um Pull Request no GitHub</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="issues" class="section">
+            <div class="section-header">
+                <i class="fas fa-exclamation-circle"></i>
+                <h2>Issues</h2>
+            </div>
+            <div class="card">
+                <p>Issues são usadas para rastrear problemas, bugs e solicitações de funcionalidades no projeto. Cada
+                    issue pode ser comentada e referenciada em commits e PRs, facilitando o gerenciamento do projeto.
+                </p>
+                <p><strong>Exemplo:</strong> Para criar uma nova issue, vá até a aba "Issues" do repositório no GitHub e
+                    clique em "New Issue".</p>
+            </div>
+        </section>
+
+        <section id="actions" class="section">
+            <div class="section-header">
+                <i class="fas fa-play-circle"></i>
+                <h2>Actions</h2>
+            </div>
+            <div class="card">
+                <p>GitHub Actions permitem a automação de fluxos de trabalho, como testes automatizados e deploy. Você
+                    define workflows no repositório para executar tarefas automaticamente a cada push ou PR.</p>
+                <p><strong>Exemplo:</strong> Para configurar um workflow, adicione um arquivo YAML na pasta
+                    <code>.github/workflows</code>:</p>
+                <div class="code-block">
+<pre>
+<code>
+name: CI
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Configurar Node.js
+        uses: actions/setup-node@v2
+        with:
+        node-version: '14'
+        run: npm install
+      - run: npm test
+    </code>
+</pre>
+                </div>
+                <p>Esse exemplo executa testes automáticos a cada novo push ou pull request no repositório.</p>
+            </div>
+        </section>
+
     </main>
 </body>
+
 </html>
